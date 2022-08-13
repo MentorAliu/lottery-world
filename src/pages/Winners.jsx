@@ -1,10 +1,12 @@
 import React from "react";
-import { Button } from "../components/shared";
+import { useSelector } from "react-redux";
+import { Button, TableContainer } from "../components/shared";
 
 export const Winners = () => {
+
+  const {users,isLoading} = useSelector(state => state.users)
+  const winnerUsers = users.filter(user => user.isWinner)
   return (
-    <div>
-      <Button text="Add Winner" />
-    </div>
+    <TableContainer title="Winners" time="time" propData={winnerUsers} isLoading={isLoading}/>
   );
 };
