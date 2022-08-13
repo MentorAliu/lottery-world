@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import { Home, SessionPlayers, Stats, Winners } from "./";
+import { Home, SessionPlayers, Stats, Winners } from ".";
 export const Application = () => {
   // (e.g. Home,SessionPlayers, Stats, Winners) also this is where use Routes and use Route for each of the mentioned Views from earlier
   return (
