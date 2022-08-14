@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Skeleton } from "../components/shared";
 
 export const Stats = () => {
   const { users, isLoading } = useSelector(state => state.users);
@@ -14,9 +15,7 @@ export const Stats = () => {
   const nations = Object.entries(countNations);
   if (isLoading) {
     return (
-      <div>
-        <h1>Loading...</h1>
-      </div>
+      <Skeleton />
     );
   }
 

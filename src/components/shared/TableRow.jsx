@@ -18,6 +18,9 @@ export const TableRow = ({ data,isForAll }) => {
         <td className="py-4 px-6">
           {data.time}
         </td>
+        <td className="py-4 px-6">
+          {/* {data.time} */}
+        </td>
       </tr>
   
   );

@@ -1,12 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button, TableContainer } from "../components/shared";
+import { TableContainer } from "../components/shared";
 
 export const Winners = () => {
+  const { users, isLoading, winners } = useSelector(state => state.users);
+  const winnerUsers = users.filter(user => user.isWinner);
 
-  const {users,isLoading} = useSelector(state => state.users)
-  const winnerUsers = users.filter(user => user.isWinner)
+  const reversedUsers = [...winnerUsers].reverse();
+
   return (
-    <TableContainer title="Winners" time="time" propData={winnerUsers} isLoading={isLoading}/>
+    <TableContainer
+      title="Winners"
+      time="time"
+      propData={winnerUsers}
+      isLoading={isLoading}
+      additionalData={`Nr of winners: ${winners}`}
+      reversed={reversedUsers}
+    />
   );
 };

@@ -44,14 +44,23 @@ const usersSlice = createSlice({
       state.isLoading = true;
     },
     [getRandomUser.fulfilled]: (state, action) => {
-      // const randomNumber = Math.floor(Math.random() * 99) + 1;
-      const randomNumber = Math.floor(Math.random() * 5) + 1;
+      //generate a random number from 1-100
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
 
+      //use this random number for testing
+      // const randomNumber = Math.floor(Math.random() * 5) + 1;
+
+      //generate a random user from action payload
       const randomUser = action.payload.results[0];
-      // const userAge = action.payload.results[0].dob.age;
-      const userAge = 5;
+
+      //get user age from payload
+      const userAge = action.payload.results[0].dob.age;
+
+      //use this user age for testing
+      // const userAge = 5;
 
       if (randomNumber === userAge) {
+        //fill users array if condition is met
         state.users.push({
           ...randomUser,
           isWinner: true,
@@ -61,11 +70,13 @@ const usersSlice = createSlice({
         state.winners += 1;
       } else {
         state.users.push({ ...randomUser, time: new Date().toLocaleString() });
+        state.timesPlayed += 1;
       }
 
-      state.timesPlayed += 1;
 
       state.isLoading = false;
+
+      //set the single random user each time the generate button is click
       state.user = action.payload.results;
     },
     [getRandomUser.rejected]: (state, action) => {

@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { Skeleton } from "./Skeleton";
 import { TableRow } from "./TableRow";
 
-export const TableContainer = ({ title, time, propData, isLoading,isForAll }) => {
+export const TableContainer = ({
+  title,
+  time,
+  propData,
+  isLoading,
+  isForAll,
+  additionalData,
+  reversed,
+}) => {
+  const [switchArray, setSwitchArray] = useState(false);
 
-
-    if (isLoading) {
-        return (
-          <div>
-            <h1>Loading...</h1>
-          </div>
-        );
-      }
+  if (isLoading) {
+    return <Skeleton />;
+  }
+  console.log(switchArray);
   return (
     <div className="overflow-x-auto relative shadow-md sm:rounded-lg w-full">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -20,15 +26,41 @@ export const TableContainer = ({ title, time, propData, isLoading,isForAll }) =>
               {title}
             </th>
             <th scope="col" className="py-3 px-6">
-              {time}
+              {time}{" "}
+              {propData.length > 1 && (
+                <button
+                  className="border border-blue-500 p-2 rounded-md ml-3 hover:text-white hover:bg-blue-500"
+                  onClick={() => setSwitchArray(!switchArray)}
+                >
+                  {switchArray ? "Ascend" : "Descend"}
+                </button>
+              )}
+            </th>
+            <th scope="col" className="py-3 px-6">
+              {additionalData}
             </th>
           </tr>
         </thead>
         <tbody>
-        {propData.map(data => {
-          console.log(data)
-          return <TableRow data={data} isForAll={isForAll} key={data.login.md5}/>;
-        })}
+          {!switchArray
+            ? propData.map(data => {
+                return (
+                  <TableRow
+                    data={data}
+                    isForAll={isForAll}
+                    key={data.login.md5}
+                  />
+                );
+              })
+            : reversed.map(data => {
+                return (
+                  <TableRow
+                    data={data}
+                    isForAll={isForAll}
+                    key={data.login.md5}
+                  />
+                );
+              })}
         </tbody>
       </table>
     </div>
