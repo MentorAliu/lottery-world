@@ -45,19 +45,19 @@ const usersSlice = createSlice({
     },
     [getRandomUser.fulfilled]: (state, action) => {
       //generate a random number from 1-100
-      const randomNumber = Math.floor(Math.random() * 100) + 1;
+      // const randomNumber = Math.floor(Math.random() * 100) + 1;
 
       //use this random number for testing
-      // const randomNumber = Math.floor(Math.random() * 5) + 1;
+      const randomNumber = Math.floor(Math.random() * 5) + 1;
 
       //generate a random user from action payload
       const randomUser = action.payload.results[0];
 
       //get user age from payload
-      const userAge = action.payload.results[0].dob.age;
+      // const userAge = action.payload.results[0].dob.age;
 
       //use this user age for testing
-      // const userAge = 5;
+      const userAge = 5;
 
       if (randomNumber === userAge) {
         //fill users array if condition is met

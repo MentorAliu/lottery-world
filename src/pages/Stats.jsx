@@ -35,8 +35,8 @@ export const Stats = () => {
         {nations.map((nation, index) => {
           //since its a limited number of nations provided by the API, index is used as a key for now
           return (
-            <tbody key={index}>
-              <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700 w-full">
+           
+              <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700 w-full" key={index}>
                 <th
                   scope="row"
                   className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
@@ -46,7 +46,7 @@ export const Stats = () => {
 
                 <td className="py-4 px-6">{nation[1]}</td>
               </tr>
-            </tbody>
+          
           );
         })}
       </table>
