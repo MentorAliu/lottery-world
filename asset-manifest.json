@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/lottery-world/static/css/main.352516ba.css",
+    "main.js": "/lottery-world/static/js/main.3441dda1.js",
+    "index.html": "/lottery-world/index.html",
+    "main.352516ba.css.map": "/lottery-world/static/css/main.352516ba.css.map",
+    "main.3441dda1.js.map": "/lottery-world/static/js/main.3441dda1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.352516ba.css",
+    "static/js/main.3441dda1.js"
+  ]
+}
